@@ -1,0 +1,27 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block body %}
+<!-- courses -->
+<section class="section">
+  <div class="container">
+    <!-- course list -->
+    <div class="row justify-content-center">
+      {% for sub in subject_cr %}
+      <!-- course item -->
+      <div class="col-lg-4 col-sm-6 mb-5">
+        <div class="card p-0 border-primary rounded-0 hover-shadow">
+          <img class="card-img-top rounded-0" src="{{ sub.image.url }}" alt="course thumb">
+          <div class="card-body">
+            <a href="">
+              <h4 class="card-title" >{{ sub.title | safe }}</h4>
+            </a>
+            <p class="card-text mb-4" >{{ sub.description }}</p>
+            <a href="{% url 'subject_detail' sub.id sub.slug %}" class="btn btn-primary btn-sm">More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
